@@ -21,7 +21,7 @@ export function Logo({
 }: LogoProps) {
   return (
     <a
-      href="#inicio"
+      href="/#inicio"
       className={cn("flex items-center gap-3", className)}
       aria-label={`Ir para o início — ${site.fullName}`}
     >
