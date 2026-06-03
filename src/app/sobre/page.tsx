@@ -8,7 +8,7 @@ import { ValuesSection } from "@/components/about/ValuesSection";
 import { PatronSaintSection } from "@/components/about/PatronSaintSection";
 
 export const metadata: Metadata = {
-  title: "Sobre | Paróquia Santo Afonso Maria de Ligório",
+  title: "Sobre",
   description:
     "Conheça a história, missão, valores e o padroeiro da Paróquia Santo Afonso Maria de Ligório.",
 };

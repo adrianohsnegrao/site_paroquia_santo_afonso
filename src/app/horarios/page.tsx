@@ -7,7 +7,7 @@ import { ParishServicesSection } from "@/components/schedules/ParishServicesSect
 import { SchedulesCTA } from "@/components/schedules/SchedulesCTA";
 
 export const metadata: Metadata = {
-  title: "Horários | Paróquia Santo Afonso Maria de Ligório",
+  title: "Horários",
   description:
     "Confira os horários de missa, confissões, adoração e atendimentos da Paróquia Santo Afonso Maria de Ligório.",
 };
