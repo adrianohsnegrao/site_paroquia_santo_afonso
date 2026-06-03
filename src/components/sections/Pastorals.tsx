@@ -16,7 +16,7 @@ export function Pastorals() {
         {pastorals.map(({ icon: Icon, name }) => (
           <li key={name}>
             <a
-              href="#contato"
+              href="/pastorais"
               className="flex h-full flex-col items-center justify-center gap-3 rounded-lg border border-brand-green/10 bg-white p-6 text-center transition-all hover:-translate-y-0.5 hover:border-brand-gold/40 hover:shadow-card"
             >
               <Icon className="h-8 w-8 text-brand-green" strokeWidth={1.5} aria-hidden />
@@ -29,7 +29,7 @@ export function Pastorals() {
       </ul>
 
       <a
-        href="#contato"
+        href="/pastorais"
         className="mt-auto inline-flex items-center gap-2 pt-6 text-sm font-semibold text-brand-green transition-colors hover:text-brand-gold-dark"
       >
         Conheça todas as pastorais
