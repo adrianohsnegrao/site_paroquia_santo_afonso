@@ -52,8 +52,12 @@ export function Header() {
   const isActive = (href: string) => {
     // Na Home, o destaque acompanha a seção visível (scroll-spy).
     if (pathname === "/") return href === `/#${activeSection}`;
-    // Em páginas próprias (/sobre, /horarios, ...), destaca o item da rota atual.
-    return href === pathname;
+    // Item de rota própria (ex.: /sobre).
+    if (href === pathname) return true;
+    // Páginas que pertencem a uma área cujo item do menu aponta para a seção da Home.
+    if (pathname.startsWith("/pastorais")) return href === "/#pastorais";
+    if (pathname.startsWith("/horarios")) return href === "/#horarios";
+    return false;
   };
 
   return (
