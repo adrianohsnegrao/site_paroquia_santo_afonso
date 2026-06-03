@@ -57,6 +57,7 @@ export function Header() {
     // Páginas que pertencem a uma área cujo item do menu aponta para a seção da Home.
     if (pathname.startsWith("/pastorais")) return href === "/#pastorais";
     if (pathname.startsWith("/horarios")) return href === "/#horarios";
+    if (pathname.startsWith("/eventos")) return href === "/#eventos";
     return false;
   };
 

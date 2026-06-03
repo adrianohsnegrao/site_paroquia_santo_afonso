@@ -72,7 +72,7 @@ export const schedulesPageData = {
     description:
       "Venha celebrar, adorar e se encontrar com Deus e com nossa comunidade.",
     buttonLabel: "Ver todas as celebrações",
-    // Aponta para a seção de eventos da Home; troque por "/eventos" quando a página existir.
-    buttonHref: "/#eventos",
+    // Página de eventos já existe.
+    buttonHref: "/eventos",
   },
 } as const;
