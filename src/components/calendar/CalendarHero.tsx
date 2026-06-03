@@ -1,0 +1,69 @@
+import Image from "next/image";
+import { CalendarDays, MapPin } from "lucide-react";
+import { Container } from "@/components/ui/Container";
+import { Button } from "@/components/ui/Button";
+import { calendarPageData } from "@/data/calendarPage";
+
+const { hero } = calendarPageData;
+
+/** Hero interno da página Calendário: banner full-width. */
+export function CalendarHero() {
+  return (
+    <section className="relative isolate overflow-hidden bg-brand-cream">
+      <div className="absolute inset-0 -z-20" aria-hidden>
+        <Image
+          src={hero.image}
+          alt={hero.imageAlt}
+          fill
+          priority
+          sizes="100vw"
+          className="object-cover object-center"
+        />
+      </div>
+      <div
+        className="absolute inset-0 -z-10 bg-gradient-to-r from-brand-cream via-brand-cream/90 to-brand-cream/25 lg:to-transparent"
+        aria-hidden
+      />
+      <div
+        className="absolute inset-0 -z-10 bg-gradient-to-t from-brand-cream/70 to-transparent lg:hidden"
+        aria-hidden
+      />
+
+      <Container>
+        <div className="flex min-h-[22rem] max-w-xl flex-col justify-center py-14 lg:min-h-[28rem] lg:py-20">
+          <span className="mb-4 inline-flex items-center gap-3 text-sm font-semibold uppercase tracking-[0.18em] text-brand-gold-dark">
+            <span className="h-px w-7 bg-brand-gold" aria-hidden />
+            {hero.eyebrow}
+            <span className="h-px w-7 bg-brand-gold" aria-hidden />
+          </span>
+
+          <h1 className="font-serif text-4xl font-bold leading-[1.05] text-brand-green-dark sm:text-5xl lg:text-6xl">
+            {hero.title}
+          </h1>
+
+          <p className="mt-4 max-w-lg text-lg leading-relaxed text-brand-green-dark/80">
+            {hero.description}
+          </p>
+
+          <div className="mt-7">
+            <Button href={hero.buttonHref} variant="secondary" size="lg">
+              <CalendarDays className="h-5 w-5" aria-hidden />
+              {hero.buttonLabel}
+            </Button>
+          </div>
+
+          <div className="mt-5 flex flex-wrap items-center gap-x-5 gap-y-2 text-sm font-medium text-brand-green-dark">
+            <span className="inline-flex items-center gap-1.5">
+              <CalendarDays className="h-4 w-4 text-brand-gold-dark" aria-hidden />
+              {hero.currentMonthLabel}
+            </span>
+            <span className="inline-flex items-center gap-1.5">
+              <MapPin className="h-4 w-4 text-brand-gold-dark" aria-hidden />
+              {hero.locationLabel}
+            </span>
+          </div>
+        </div>
+      </Container>
+    </section>
+  );
+}
