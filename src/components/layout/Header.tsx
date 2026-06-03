@@ -50,9 +50,10 @@ export function Header() {
   }, [pathname]);
 
   const isActive = (href: string) => {
-    if (pathname === "/sobre") return href === "/sobre";
+    // Na Home, o destaque acompanha a seção visível (scroll-spy).
     if (pathname === "/") return href === `/#${activeSection}`;
-    return false;
+    // Em páginas próprias (/sobre, /horarios, ...), destaca o item da rota atual.
+    return href === pathname;
   };
 
   return (
