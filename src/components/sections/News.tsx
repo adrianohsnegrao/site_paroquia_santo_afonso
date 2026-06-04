@@ -1,11 +1,14 @@
-import { ArrowRight, CalendarDays, Newspaper } from "lucide-react";
+import Image from "next/image";
+import { ArrowRight, CalendarDays } from "lucide-react";
 import { Container } from "@/components/ui/Container";
 import { SectionHeading } from "@/components/ui/SectionHeading";
-import { MediaPlaceholder } from "@/components/ui/MediaPlaceholder";
 import { Button } from "@/components/ui/Button";
-import { news } from "@/data/news";
+import { newsPageData } from "@/data/newsPage";
 
-/** Seção "Notícias e Comunicados" com três cartões. */
+// Usa a mesma fonte da listagem/detalhe: destaque + 2 notícias (cada card abre o detalhe).
+const homeNews = [newsPageData.featured, ...newsPageData.news].slice(0, 3);
+
+/** Seção "Notícias e Comunicados" da Home com três cartões. */
 export function News() {
   return (
     <section id="noticias" className="bg-brand-cream-light pb-14 pt-4 lg:pb-16 lg:pt-6">
@@ -23,39 +26,40 @@ export function News() {
         </div>
 
         <ul className="mt-10 grid gap-7 md:grid-cols-3">
-          {news.map((item) => (
-            <li key={item.title}>
-              <article className="flex h-full flex-col overflow-hidden rounded-xl2 border border-brand-green/10 bg-white shadow-card transition-shadow hover:shadow-soft">
-                <div className="relative">
-                  <MediaPlaceholder
-                    label="Foto da notícia"
-                    icon={Newspaper}
-                    className="aspect-[16/9] w-full"
-                  />
-                  <span className="absolute left-3 top-3 rounded-full bg-brand-green px-3 py-1 text-xs font-semibold text-white shadow-sm">
-                    {item.category}
-                  </span>
-                </div>
-                <div className="flex flex-1 flex-col p-5">
-                  <p className="inline-flex items-center gap-1.5 text-xs font-medium text-brand-gold-dark">
-                    <CalendarDays className="h-3.5 w-3.5" aria-hidden />
-                    {item.date}
-                  </p>
-                  <h3 className="mt-2 font-serif text-xl font-bold leading-snug text-brand-green-dark">
-                    {item.title}
-                  </h3>
-                  <p className="mt-2 flex-1 text-sm leading-relaxed text-brand-green-dark/70">
-                    {item.excerpt}
-                  </p>
-                  <a
-                    href={item.href}
-                    className="mt-4 inline-flex items-center gap-1.5 text-sm font-semibold text-brand-green transition-colors hover:text-brand-gold-dark"
-                  >
-                    Leia mais
-                    <ArrowRight className="h-4 w-4" aria-hidden />
-                  </a>
-                </div>
-              </article>
+          {homeNews.map((item) => (
+            <li key={item.slug}>
+              <a href={`/noticias/${item.slug}`} className="group block h-full">
+                <article className="flex h-full flex-col overflow-hidden rounded-lg border border-brand-green/10 bg-white shadow-card transition-all hover:-translate-y-0.5 hover:shadow-soft">
+                  <div className="relative aspect-[16/9] w-full">
+                    <Image
+                      src={item.image}
+                      alt={item.imageAlt}
+                      fill
+                      sizes="(max-width: 768px) 100vw, 33vw"
+                      className="object-cover object-center"
+                    />
+                    <span className="absolute left-3 top-3 rounded-md bg-brand-green px-2.5 py-1 text-xs font-semibold text-white shadow-card">
+                      {item.category}
+                    </span>
+                  </div>
+                  <div className="flex flex-1 flex-col p-5">
+                    <p className="inline-flex items-center gap-1.5 text-xs font-medium text-brand-gold-dark">
+                      <CalendarDays className="h-3.5 w-3.5" aria-hidden />
+                      {item.formattedDate}
+                    </p>
+                    <h3 className="mt-2 font-serif text-xl font-bold leading-snug text-brand-green-dark">
+                      {item.title}
+                    </h3>
+                    <p className="mt-2 flex-1 text-sm leading-relaxed text-brand-green-dark/70">
+                      {item.excerpt}
+                    </p>
+                    <span className="mt-4 inline-flex items-center gap-1.5 text-sm font-semibold text-brand-green transition-colors group-hover:text-brand-gold-dark">
+                      Leia mais
+                      <ArrowRight className="h-4 w-4" aria-hidden />
+                    </span>
+                  </div>
+                </article>
+              </a>
             </li>
           ))}
         </ul>
