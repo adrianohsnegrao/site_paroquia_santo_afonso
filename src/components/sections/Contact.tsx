@@ -10,7 +10,6 @@ import {
 } from "lucide-react";
 import { Container } from "@/components/ui/Container";
 import { Button } from "@/components/ui/Button";
-import { MediaPlaceholder } from "@/components/ui/MediaPlaceholder";
 import { site } from "@/data/site";
 
 const socials = [
@@ -111,11 +110,14 @@ export function Contact() {
             </div>
           </div>
 
-          {/* Mapa */}
-          <MediaPlaceholder
-            label="Mapa da localização"
-            icon={MapPin}
-            className="h-full min-h-[14rem] w-full rounded-lg ring-1 ring-white/10 lg:min-h-[20rem]"
+          {/* Mapa real (Google Maps) */}
+          <iframe
+            title="Mapa da localização da Paróquia Santo Afonso Maria de Ligório"
+            src={site.contact.mapEmbedUrl}
+            loading="lazy"
+            referrerPolicy="no-referrer-when-downgrade"
+            allowFullScreen
+            className="h-full min-h-[14rem] w-full rounded-lg border-0 ring-1 ring-white/10 lg:min-h-[20rem]"
           />
         </div>
       </Container>
