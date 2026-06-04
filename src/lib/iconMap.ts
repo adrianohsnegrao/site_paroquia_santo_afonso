@@ -23,6 +23,8 @@ import {
   Bird,
   Hand,
   Clock,
+  Info,
+  Newspaper,
 } from "lucide-react";
 
 /**
@@ -56,6 +58,8 @@ export const iconMap: Record<string, LucideIcon> = {
   clock: Clock,
   rosary: HandHeart,
   dove: Bird,
+  info: Info,
+  newspaper: Newspaper,
 };
 
 /** Retorna o ícone correspondente ao nome; usa Church como fallback seguro. */

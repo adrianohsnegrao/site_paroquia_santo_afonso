@@ -16,7 +16,7 @@ export function News() {
             title="Notícias e Comunicados"
             description="Acompanhe as novidades, avisos e comunicados da nossa comunidade paroquial."
           />
-          <Button href="#" variant="outline" size="md" className="hidden shrink-0 sm:inline-flex">
+          <Button href="/noticias" variant="outline" size="md" className="hidden shrink-0 sm:inline-flex">
             Ver todas as notícias
             <ArrowRight className="h-4 w-4" aria-hidden />
           </Button>
@@ -61,7 +61,7 @@ export function News() {
         </ul>
 
         <div className="mt-8 text-center sm:hidden">
-          <Button href="#" variant="outline" size="md">
+          <Button href="/noticias" variant="outline" size="md">
             Ver todas as notícias
             <ArrowRight className="h-4 w-4" aria-hidden />
           </Button>

@@ -58,6 +58,7 @@ export function Header() {
     if (pathname.startsWith("/pastorais")) return href === "/#pastorais";
     if (pathname.startsWith("/horarios")) return href === "/#horarios";
     if (pathname.startsWith("/eventos")) return href === "/#eventos";
+    if (pathname.startsWith("/noticias")) return href === "/#noticias";
     return false;
   };
 
