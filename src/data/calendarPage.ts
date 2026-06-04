@@ -143,7 +143,7 @@ export const calendarPageData = {
       "Acompanhe o calendário completo e participe das celebrações e encontros da paróquia.",
     buttonLabel: "Quero participar",
     // Aponta para a seção de contato da Home; troque por "/contato" quando a página existir.
-    buttonHref: "/#contato",
+    buttonHref: "/contato",
     image: "/images/calendario/CTAIgreja.png",
     imageAlt: "Fachada da Paróquia Santo Afonso Maria de Ligório iluminada à noite",
   },

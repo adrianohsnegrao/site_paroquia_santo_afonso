@@ -168,8 +168,8 @@ export const newsPageData = {
     description:
       "Receba nossas notícias e avisos diretamente no seu e-mail e não perca nenhuma novidade da paróquia.",
     buttonLabel: "Receber avisos",
-    buttonHref: "/#contato",
+    buttonHref: "/contato",
     secondaryLabel: "Entrar em contato",
-    secondaryHref: "/#contato",
+    secondaryHref: "/contato",
   },
 } as const;

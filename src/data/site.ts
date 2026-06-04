@@ -34,8 +34,8 @@ export const site = {
     alt: "Fachada da Paróquia Santo Afonso Maria de Ligório",
   },
   contact: {
-    addressLines: ["Rua das Flores, 123", "Bairro Jardim Esperança", "Manaus - AM"],
-    phone: "(12) 3456-7890",
+    addressLines: ["Av. Constantino Nery, 5785", "Flores", "Manaus - AM — CEP 69058-795"],
+    phone: "(92) 99487-1883",
     email: "contato@paroquiasantoafonso.org.br",
     officeHours: "Segunda a Sexta: 8h às 12h | 14h às 18h",
     // Localização real (Google Maps) — Manaus/AM
@@ -43,12 +43,12 @@ export const site = {
       "https://www.google.com/maps/place/Par%C3%B3quia+Santo+Afonso+Maria+de+Ligorio+-+MANAUS+-AM/@-3.0740864,-60.0272607,17z",
     mapEmbedUrl:
       "https://maps.google.com/maps?q=-3.0740864,-60.0272607&z=16&hl=pt-BR&output=embed",
-    whatsapp: "https://wa.me/",
+    whatsapp: "https://wa.me/5592994871883",
   },
   social: {
     facebook: "https://facebook.com",
     instagram: "https://instagram.com",
     youtube: "https://youtube.com",
-    whatsapp: "https://wa.me/",
+    whatsapp: "https://wa.me/5592994871883",
   },
 } as const;

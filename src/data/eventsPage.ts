@@ -132,7 +132,7 @@ export const eventsPageData = {
       "Os eventos são oportunidades de crescer na fé, fazer novos amigos e servir com alegria.",
     buttonLabel: "Quero participar",
     // Aponta para a seção de contato da Home; troque por "/contato" quando a página existir.
-    buttonHref: "/#contato",
+    buttonHref: "/contato",
     image: "/images/eventos/CTAParticipedacomunidade.png",
     imageAlt: "Comunidade reunida em confraternização em frente à paróquia",
   },

@@ -25,6 +25,11 @@ import {
   Clock,
   Info,
   Newspaper,
+  Droplets,
+  Facebook,
+  Instagram,
+  Youtube,
+  MessageCircle,
 } from "lucide-react";
 
 /**
@@ -60,6 +65,13 @@ export const iconMap: Record<string, LucideIcon> = {
   dove: Bird,
   info: Info,
   newspaper: Newspaper,
+  chalice: Church,
+  droplets: Droplets,
+  rings: HeartHandshake,
+  facebook: Facebook,
+  instagram: Instagram,
+  youtube: Youtube,
+  "message-circle": MessageCircle,
 };
 
 /** Retorna o ícone correspondente ao nome; usa Church como fallback seguro. */

@@ -59,6 +59,7 @@ export function Header() {
     if (pathname.startsWith("/horarios")) return href === "/#horarios";
     if (pathname.startsWith("/eventos")) return href === "/#eventos";
     if (pathname.startsWith("/noticias")) return href === "/#noticias";
+    if (pathname.startsWith("/contato")) return href === "/#contato";
     return false;
   };
 
@@ -94,7 +95,7 @@ export function Header() {
 
         <div className="flex items-center gap-2">
           <Button
-            href="/#contato"
+            href="/contato"
             variant="secondary"
             size="md"
             className="hidden sm:inline-flex"
@@ -148,7 +149,7 @@ export function Header() {
               );
             })}
             <li className="mt-2">
-              <Button href="/#contato" variant="secondary" size="md" className="w-full">
+              <Button href="/contato" variant="secondary" size="md" className="w-full">
                 <HandHeart className="h-4 w-4" aria-hidden />
                 Seja Dizimista
               </Button>

@@ -155,6 +155,6 @@ export const pastoralsPageData = {
     ctaText: "Fale com a Secretaria Paroquial e saiba como participar!",
     buttonLabel: "Entrar em contato",
     // Aponta para a seção de contato da Home; troque por "/contato" quando a página existir.
-    buttonHref: "/#contato",
+    buttonHref: "/contato",
   },
 } as const;

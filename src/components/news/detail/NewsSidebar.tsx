@@ -72,7 +72,7 @@ export function NewsSidebar({ news }: { news: NewsDetail }) {
         <p className="mt-1 text-sm text-brand-green-dark/75">
           Avisos, notícias e eventos diretamente no seu e-mail.
         </p>
-        <Button href="/#contato" variant="secondary" size="md" className="mt-4 w-full">
+        <Button href="/contato" variant="secondary" size="md" className="mt-4 w-full">
           Receber avisos
           <ArrowRight className="h-4 w-4" aria-hidden />
         </Button>

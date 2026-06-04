@@ -104,7 +104,7 @@ export const pastoralDetails: PastoralDetail[] = [
       title: "A Palavra de Deus transforma vidas!",
       description: "Venha fazer parte desta missão e permita que Deus fale ao seu coração.",
       buttonLabel: "Quero participar",
-      buttonHref: "/#contato",
+      buttonHref: "/contato",
     },
     coordinator: {
       label: "Coordenação",
@@ -117,7 +117,7 @@ export const pastoralDetails: PastoralDetail[] = [
       title: "Fale com a Pastoral",
       description: "Entre em contato conosco para saber mais sobre nossas atividades.",
       buttonLabel: "Entrar em contato",
-      buttonHref: "/#contato",
+      buttonHref: "/contato",
     },
   },
 
@@ -158,7 +158,7 @@ export const pastoralDetails: PastoralDetail[] = [
       title: "A liturgia é o coração da nossa fé!",
       description: "Coloque seus dons a serviço de celebrações cada vez mais belas e participativas.",
       buttonLabel: "Quero participar",
-      buttonHref: "/#contato",
+      buttonHref: "/contato",
     },
     coordinator: {
       label: "Coordenação",
@@ -171,7 +171,7 @@ export const pastoralDetails: PastoralDetail[] = [
       title: "Fale com a Pastoral",
       description: "Entre em contato conosco para saber mais sobre nossas atividades.",
       buttonLabel: "Entrar em contato",
-      buttonHref: "/#contato",
+      buttonHref: "/contato",
     },
   },
 
@@ -212,7 +212,7 @@ export const pastoralDetails: PastoralDetail[] = [
       title: "Ajude a semear a fé nos corações!",
       description: "Seja catequista ou inscreva-se: há sempre um lugar para você nesta missão.",
       buttonLabel: "Quero participar",
-      buttonHref: "/#contato",
+      buttonHref: "/contato",
     },
     coordinator: {
       label: "Coordenação",
@@ -225,7 +225,7 @@ export const pastoralDetails: PastoralDetail[] = [
       title: "Fale com a Pastoral",
       description: "Entre em contato conosco para saber mais sobre nossas atividades.",
       buttonLabel: "Entrar em contato",
-      buttonHref: "/#contato",
+      buttonHref: "/contato",
     },
   },
 
@@ -266,7 +266,7 @@ export const pastoralDetails: PastoralDetail[] = [
       title: "A família é o primeiro santuário da fé!",
       description: "Participe e ajude a construir lares fortes, unidos e cristãos.",
       buttonLabel: "Quero participar",
-      buttonHref: "/#contato",
+      buttonHref: "/contato",
     },
     coordinator: {
       label: "Coordenação",
@@ -279,7 +279,7 @@ export const pastoralDetails: PastoralDetail[] = [
       title: "Fale com a Pastoral",
       description: "Entre em contato conosco para saber mais sobre nossas atividades.",
       buttonLabel: "Entrar em contato",
-      buttonHref: "/#contato",
+      buttonHref: "/contato",
     },
   },
 
@@ -320,7 +320,7 @@ export const pastoralDetails: PastoralDetail[] = [
       title: "Faça o bem e transforme realidades!",
       description: "Doe seu tempo e seus dons a serviço dos que mais precisam.",
       buttonLabel: "Quero participar",
-      buttonHref: "/#contato",
+      buttonHref: "/contato",
     },
     coordinator: {
       label: "Coordenação",
@@ -333,7 +333,7 @@ export const pastoralDetails: PastoralDetail[] = [
       title: "Fale com a Pastoral",
       description: "Entre em contato conosco para saber mais sobre nossas atividades.",
       buttonLabel: "Entrar em contato",
-      buttonHref: "/#contato",
+      buttonHref: "/contato",
     },
   },
 
@@ -374,7 +374,7 @@ export const pastoralDetails: PastoralDetail[] = [
       title: "Jovem, sua vocação é agora!",
       description: "Faça parte de uma juventude que ora, serve e transforma o mundo.",
       buttonLabel: "Quero participar",
-      buttonHref: "/#contato",
+      buttonHref: "/contato",
     },
     coordinator: {
       label: "Coordenação",
@@ -387,7 +387,7 @@ export const pastoralDetails: PastoralDetail[] = [
       title: "Fale com a Pastoral",
       description: "Entre em contato conosco para saber mais sobre nossas atividades.",
       buttonLabel: "Entrar em contato",
-      buttonHref: "/#contato",
+      buttonHref: "/contato",
     },
   },
 
@@ -428,7 +428,7 @@ export const pastoralDetails: PastoralDetail[] = [
       title: "Coloque seus dons a serviço do louvor!",
       description: "Cante ou toque conosco e ajude a comunidade a rezar cantando.",
       buttonLabel: "Quero participar",
-      buttonHref: "/#contato",
+      buttonHref: "/contato",
     },
     coordinator: {
       label: "Coordenação",
@@ -441,7 +441,7 @@ export const pastoralDetails: PastoralDetail[] = [
       title: "Fale com a Pastoral",
       description: "Entre em contato conosco para saber mais sobre nossas atividades.",
       buttonLabel: "Entrar em contato",
-      buttonHref: "/#contato",
+      buttonHref: "/contato",
     },
   },
 
@@ -482,7 +482,7 @@ export const pastoralDetails: PastoralDetail[] = [
       title: "Unidos na oração, transformamos o mundo!",
       description: "Reze conosco e interceda pelas necessidades da Igreja e da comunidade.",
       buttonLabel: "Quero participar",
-      buttonHref: "/#contato",
+      buttonHref: "/contato",
     },
     coordinator: {
       label: "Coordenação",
@@ -495,7 +495,7 @@ export const pastoralDetails: PastoralDetail[] = [
       title: "Fale com a Pastoral",
       description: "Entre em contato conosco para saber mais sobre nossas atividades.",
       buttonLabel: "Entrar em contato",
-      buttonHref: "/#contato",
+      buttonHref: "/contato",
     },
   },
 ];

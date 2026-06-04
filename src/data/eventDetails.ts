@@ -85,7 +85,7 @@ const CONTACT = {
   title: "Fale com a Pastoral",
   description: "Entre em contato para mais informações sobre este e outros eventos.",
   buttonLabel: "Entrar em contato",
-  buttonHref: "/#contato",
+  buttonHref: "/contato",
 };
 const CALENDAR = {
   buttonLabel: "Adicionar ao calendário",
@@ -140,7 +140,7 @@ export const eventDetails: EventDetail[] = [
       description:
         "Traga sua família e amigos para rezarmos juntos o Terço Mariano. Nossa Senhora espera por você!",
       buttonLabel: "Quero participar",
-      buttonHref: "/#contato",
+      buttonHref: "/contato",
       secondaryLabel: "Convidar amigos",
       secondaryHref: "/eventos/terco-mariano",
     },
@@ -202,7 +202,7 @@ export const eventDetails: EventDetail[] = [
       description:
         "Reserve esta noite para estar diante do Santíssimo e renovar suas forças na presença do Senhor.",
       buttonLabel: "Quero participar",
-      buttonHref: "/#contato",
+      buttonHref: "/contato",
       secondaryLabel: "Convidar amigos",
       secondaryHref: "/eventos/noite-de-adoracao",
     },
@@ -263,7 +263,7 @@ export const eventDetails: EventDetail[] = [
       description:
         "Um momento especial para crescer na fé e fortalecer os vínculos do seu lar. Todos são bem-vindos!",
       buttonLabel: "Quero participar",
-      buttonHref: "/#contato",
+      buttonHref: "/contato",
       secondaryLabel: "Convidar amigos",
       secondaryHref: "/eventos/encontro-de-familias",
     },
@@ -324,7 +324,7 @@ export const eventDetails: EventDetail[] = [
       description:
         "Participe da missa, da procissão e da festa. Traga sua família para esta grande celebração de fé!",
       buttonLabel: "Quero participar",
-      buttonHref: "/#contato",
+      buttonHref: "/contato",
       secondaryLabel: "Convidar amigos",
       secondaryHref: "/eventos/festa-de-sao-pedro",
     },

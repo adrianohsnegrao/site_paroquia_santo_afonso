@@ -27,6 +27,10 @@ interface ButtonProps {
   className?: string;
   children: React.ReactNode;
   type?: "button" | "submit";
+  onClick?: React.MouseEventHandler<HTMLElement>;
+  disabled?: boolean;
+  target?: string;
+  rel?: string;
   "aria-label"?: string;
 }
 
@@ -38,10 +42,15 @@ export function Button({
   size = "md",
   className,
   children,
+  type = "button",
+  onClick,
+  disabled,
+  target,
+  rel,
   ...rest
 }: ButtonProps) {
   const classes = cn(
-    "inline-flex items-center justify-center gap-2 rounded-md font-semibold transition-colors duration-200",
+    "inline-flex items-center justify-center gap-2 rounded-md font-semibold transition-colors duration-200 disabled:cursor-not-allowed disabled:opacity-60",
     variants[variant],
     sizes[size],
     className,
@@ -49,14 +58,14 @@ export function Button({
 
   if (as === "a") {
     return (
-      <a href={href} className={classes} {...rest}>
+      <a href={href} className={classes} onClick={onClick} target={target} rel={rel} {...rest}>
         {children}
       </a>
     );
   }
 
   return (
-    <button className={classes} {...rest}>
+    <button className={classes} type={type} onClick={onClick} disabled={disabled} {...rest}>
       {children}
     </button>
   );
