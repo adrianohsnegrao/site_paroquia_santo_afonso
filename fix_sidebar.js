@@ -1,0 +1,7 @@
+const fs = require('fs');
+
+let sidebar = fs.readFileSync('src/components/admin/Sidebar.tsx', 'utf8');
+sidebar = sidebar.replace(/<<<<<<< HEAD\nimport { usePathname } from "next\/navigation";\n=======\nimport { usePathname, useRouter } from "next\/navigation";\nimport { createClient } from "@\/lib\/supabase\/client";\n>>>>>>> main\n/g, 'import { usePathname, useRouter } from "next/navigation";\nimport { createClient } from "@/lib/supabase/client";\n');
+sidebar = sidebar.replace(/<<<<<<< HEAD\n  const \[isOpen, setIsOpen\] = useState\(false\);\n\n  const toggleSidebar = \(\) => setIsOpen\(!isOpen\);\n\n=======\n  const router = useRouter\(\);\n  const \[isOpen, setIsOpen\] = useState\(false\);\n  const supabase = createClient\(\);\n\n  const toggleSidebar = \(\) => setIsOpen\(!isOpen\);\n\n  const handleLogout = async \(\) => \{\n    await supabase.auth.signOut\(\);\n    router.push\("\/admin\/login"\);\n    router.refresh\(\);\n  \};\n\n>>>>>>> main\n/g, '  const router = useRouter();\n  const [isOpen, setIsOpen] = useState(false);\n  const supabase = createClient();\n\n  const toggleSidebar = () => setIsOpen(!isOpen);\n\n  const handleLogout = async () => {\n    await supabase.auth.signOut();\n    router.push("/admin/login");\n    router.refresh();\n  };\n\n');
+sidebar = sidebar.replace(/<<<<<<< HEAD\n=======\n            onClick={handleLogout}\n>>>>>>> main\n/g, '            onClick={handleLogout}\n');
+fs.writeFileSync('src/components/admin/Sidebar.tsx', sidebar);
