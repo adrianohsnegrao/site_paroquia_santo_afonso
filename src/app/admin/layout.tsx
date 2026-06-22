@@ -8,7 +8,8 @@ export const metadata = {
   description: "Área administrativa da Paróquia Santo Afonso",
 };
 
-export default async function AdminLayout({  children,
+export default async function AdminLayout({
+  children,
 }: {
   children: React.ReactNode;
 }) {
