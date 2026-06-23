@@ -7,7 +7,7 @@ export default function AdminDashboardPage() {
     {
       title: "Nova Notícia",
       description: "Publicar aviso ou artigo na área de notícias.",
-      href: "/admin/noticias/nova",
+      href: "/admin/noticias/novo",
       icon: PlusCircle,
       colorClass: "bg-brand-green",
     },
