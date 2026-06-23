@@ -15,11 +15,13 @@ import {
   LogOut,
   Menu,
   X,
+  Megaphone,
 } from "lucide-react";
 
 const navItems = [
   { name: "Dashboard", href: "/admin", icon: LayoutDashboard },
   { name: "Notícias", href: "/admin/noticias", icon: Newspaper },
+  { name: "Avisos", href: "/admin/avisos", icon: Megaphone },
   { name: "Eventos", href: "/admin/eventos", icon: CalendarDays },
   { name: "Pastorais", href: "/admin/pastorais", icon: Users },
   { name: "Horários", href: "/admin/horarios", icon: Clock },

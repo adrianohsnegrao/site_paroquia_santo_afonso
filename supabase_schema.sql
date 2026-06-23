@@ -28,6 +28,22 @@ CREATE TABLE public.noticias (
   PRIMARY KEY (id)
 );
 
+-- Tabela: avisos
+CREATE TABLE public.avisos (
+  id uuid NOT NULL DEFAULT gen_random_uuid(),
+  titulo text NOT NULL,
+  slug text NOT NULL UNIQUE,
+  resumo text,
+  conteudo text NOT NULL, -- Armazenará HTML do TipTap
+  imagem_capa text,
+  destaque boolean NOT NULL DEFAULT false,
+  destaque_home boolean NOT NULL DEFAULT false,
+  status text NOT NULL DEFAULT 'rascunho',
+  created_at timestamptz NOT NULL DEFAULT now(),
+  updated_at timestamptz NOT NULL DEFAULT now(),
+  PRIMARY KEY (id)
+);
+
 -- Tabela: eventos
 CREATE TABLE public.eventos (
   id uuid NOT NULL DEFAULT gen_random_uuid(),
@@ -89,6 +105,7 @@ $$ LANGUAGE plpgsql;
 -- Aplicando os triggers
 CREATE TRIGGER set_usuarios_updated_at BEFORE UPDATE ON public.usuarios FOR EACH ROW EXECUTE FUNCTION public.handle_updated_at();
 CREATE TRIGGER set_noticias_updated_at BEFORE UPDATE ON public.noticias FOR EACH ROW EXECUTE FUNCTION public.handle_updated_at();
+CREATE TRIGGER set_avisos_updated_at BEFORE UPDATE ON public.avisos FOR EACH ROW EXECUTE FUNCTION public.handle_updated_at();
 CREATE TRIGGER set_eventos_updated_at BEFORE UPDATE ON public.eventos FOR EACH ROW EXECUTE FUNCTION public.handle_updated_at();
 CREATE TRIGGER set_pastorais_updated_at BEFORE UPDATE ON public.pastorais FOR EACH ROW EXECUTE FUNCTION public.handle_updated_at();
 CREATE TRIGGER set_mensagens_contato_updated_at BEFORE UPDATE ON public.mensagens_contato FOR EACH ROW EXECUTE FUNCTION public.handle_updated_at();
@@ -108,6 +125,7 @@ Passos (pode ser rodado no SQL Editor do Supabase):
 
 ALTER TABLE public.usuarios ENABLE ROW LEVEL SECURITY;
 ALTER TABLE public.noticias ENABLE ROW LEVEL SECURITY;
+ALTER TABLE public.avisos ENABLE ROW LEVEL SECURITY;
 ALTER TABLE public.eventos ENABLE ROW LEVEL SECURITY;
 ALTER TABLE public.pastorais ENABLE ROW LEVEL SECURITY;
 ALTER TABLE public.mensagens_contato ENABLE ROW LEVEL SECURITY;
@@ -119,6 +137,10 @@ ALTER TABLE public.mensagens_contato ENABLE ROW LEVEL SECURITY;
 -- Noticias
 CREATE POLICY "Leitura publica de noticias" ON public.noticias FOR SELECT USING (true);
 CREATE POLICY "Acesso autenticado para criar/modificar noticias" ON public.noticias FOR ALL USING (auth.role() = 'authenticated');
+
+-- Avisos
+CREATE POLICY "Leitura publica de avisos" ON public.avisos FOR SELECT USING (true);
+CREATE POLICY "Acesso autenticado para criar/modificar avisos" ON public.avisos FOR ALL USING (auth.role() = 'authenticated');
 
 -- Eventos
 CREATE POLICY "Leitura publica de eventos" ON public.eventos FOR SELECT USING (true);
