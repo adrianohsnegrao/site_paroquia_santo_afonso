@@ -57,25 +57,25 @@ export function ImageUpload({ onChange, value, className = '' }: ImageUploadProp
   return (
     <div className={`w-full ${className}`}>
       {previewUrl ? (
-        <div className="relative rounded-lg overflow-hidden border border-gray-200 group">
+        <div className="group relative overflow-hidden rounded-xl ring-1 ring-brand-green-deep/10">
           {/* eslint-disable-next-line @next/next/no-img-element */}
           <img
             src={previewUrl}
             alt="Preview"
-            className="w-full h-auto max-h-64 object-cover"
+            className="h-auto max-h-64 w-full object-cover"
           />
           {isUploading ? (
-            <div className="absolute inset-0 bg-white/50 flex items-center justify-center">
-              <Loader2 className="w-8 h-8 text-brand-600 animate-spin" />
+            <div className="absolute inset-0 flex items-center justify-center bg-white/60 backdrop-blur-sm">
+              <Loader2 className="h-8 w-8 animate-spin text-brand-green" />
             </div>
           ) : (
             <button
               type="button"
               onClick={handleRemove}
-              className="absolute top-2 right-2 p-1.5 bg-red-500 text-white rounded-full opacity-0 group-hover:opacity-100 transition-opacity hover:bg-red-600 focus:outline-none focus:ring-2 focus:ring-red-500 focus:ring-offset-2"
-              aria-label="Remove image"
+              className="absolute right-2 top-2 rounded-full bg-red-500 p-1.5 text-white opacity-0 shadow-sm transition-opacity hover:bg-red-600 focus:outline-none focus:ring-2 focus:ring-red-500 focus:ring-offset-2 group-hover:opacity-100"
+              aria-label="Remover imagem"
             >
-              <X className="w-4 h-4" />
+              <X className="h-4 w-4" />
             </button>
           )}
         </div>
@@ -84,11 +84,11 @@ export function ImageUpload({ onChange, value, className = '' }: ImageUploadProp
           type="button"
           onClick={() => fileInputRef.current?.click()}
           disabled={isUploading}
-          className="w-full h-32 border-2 border-dashed border-gray-300 rounded-lg flex flex-col items-center justify-center text-gray-500 hover:text-brand-600 hover:border-brand-600 hover:bg-brand-50 transition-colors disabled:opacity-50 disabled:cursor-not-allowed focus:outline-none focus:ring-2 focus:ring-brand-500 focus:ring-offset-2"
+          className="flex h-32 w-full flex-col items-center justify-center rounded-xl border-2 border-dashed border-brand-green-deep/15 bg-brand-cream-light/50 text-brand-green-deep/50 transition-colors hover:border-brand-green/50 hover:bg-brand-cream hover:text-brand-green focus:outline-none focus:ring-2 focus:ring-brand-green focus:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50"
         >
-          <Upload className="w-8 h-8 mb-2" />
+          <Upload className="mb-2 h-7 w-7" />
           <span className="text-sm font-medium">Clique para selecionar uma imagem</span>
-          <span className="text-xs text-gray-400 mt-1">PNG, JPG, WEBP até 5MB</span>
+          <span className="mt-1 text-xs text-brand-green-deep/40">PNG, JPG, WEBP até 5MB</span>
         </button>
       )}
 

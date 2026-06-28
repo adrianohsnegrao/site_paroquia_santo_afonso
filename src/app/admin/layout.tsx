@@ -1,5 +1,6 @@
 import React from "react";
 import Sidebar from "@/components/admin/Sidebar";
+import { TopBar } from "@/components/admin/TopBar";
 import { createClient } from '@/lib/supabase/server'
 
 export const metadata = {
@@ -22,10 +23,11 @@ export default async function AdminLayout({
   }
 
   return (
-    <div className="flex min-h-screen bg-brand-cream-light">
-      <Sidebar />
-      <div className="flex-1 md:ml-64 w-full transition-all duration-300">
-        <main className="p-6 md:p-10 min-h-screen max-w-7xl mx-auto mt-14 md:mt-0">
+    <div className="min-h-screen bg-brand-cream-light bg-[radial-gradient(60rem_40rem_at_120%_-10%,rgba(217,163,41,0.06),transparent),radial-gradient(50rem_40rem_at_-10%_110%,rgba(47,107,79,0.06),transparent)]">
+      <Sidebar userEmail={user.email} />
+      <div className="md:pl-64">
+        <TopBar />
+        <main className="mx-auto min-h-screen max-w-7xl px-4 pb-16 pt-20 sm:px-6 md:px-10 md:pt-8">
           {children}
         </main>
       </div>

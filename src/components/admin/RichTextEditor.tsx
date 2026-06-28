@@ -63,18 +63,18 @@ const MenuBar = ({ editor }: { editor: any }) => {
   ];
 
   return (
-    <div className="flex flex-wrap items-center gap-1 p-2 border-b border-gray-200 bg-gray-50 rounded-t-lg">
+    <div className="flex flex-wrap items-center gap-1 rounded-t-xl border-b border-brand-green-deep/[0.08] bg-brand-cream/40 p-2">
       {buttons.map((btn, index) => (
         <button
           key={index}
           onClick={btn.onClick}
           type="button"
           title={btn.title}
-          className={`p-2 rounded-md transition-colors ${
+          className={`rounded-lg p-2 transition-colors ${
             btn.isActive
-              ? 'bg-brand-100 text-brand-700'
-              : 'text-gray-600 hover:bg-gray-200 hover:text-gray-900'
-          } focus:outline-none focus:ring-2 focus:ring-brand-500`}
+              ? 'bg-brand-green/12 text-brand-green-dark'
+              : 'text-brand-green-deep/55 hover:bg-brand-green-deep/[0.06] hover:text-brand-green-deep'
+          } focus:outline-none focus:ring-2 focus:ring-brand-green`}
         >
           {btn.icon}
         </button>
@@ -96,7 +96,7 @@ export function RichTextEditor({ content = '', onChange, className = '' }: RichT
     editorProps: {
       attributes: {
         class:
-          'prose prose-sm sm:prose-base focus:outline-none min-h-[150px] p-4 max-w-none prose-headings:font-bold prose-h2:text-2xl prose-h3:text-xl prose-p:leading-relaxed prose-a:text-brand-600 hover:prose-a:text-brand-700',
+          'prose prose-sm sm:prose-base focus:outline-none min-h-[150px] p-4 max-w-none prose-headings:font-serif prose-headings:text-brand-green-deep prose-h2:text-2xl prose-h3:text-xl prose-p:leading-relaxed prose-a:text-brand-green hover:prose-a:text-brand-green-dark',
       },
     },
     onUpdate: ({ editor }) => {
@@ -105,7 +105,7 @@ export function RichTextEditor({ content = '', onChange, className = '' }: RichT
   });
 
   return (
-    <div className={`border border-gray-200 rounded-lg flex flex-col bg-white focus-within:ring-2 focus-within:ring-brand-500 focus-within:border-transparent transition-shadow ${className}`}>
+    <div className={`flex flex-col rounded-xl bg-white ring-1 ring-inset ring-brand-green-deep/[0.12] transition focus-within:ring-2 focus-within:ring-brand-green ${className}`}>
       <MenuBar editor={editor} />
       <div className="flex-1 overflow-y-auto">
         <EditorContent editor={editor} />

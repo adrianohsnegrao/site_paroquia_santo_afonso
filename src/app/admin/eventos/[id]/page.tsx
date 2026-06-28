@@ -6,14 +6,19 @@ import { fetchEventoById, updateEvento } from '../actions';
 import { Button } from '@/components/ui/Button';
 import { ImageUpload } from '@/components/admin/ImageUpload';
 import { RichTextEditor } from '@/components/admin/RichTextEditor';
-import { ArrowLeft, Loader2 } from 'lucide-react';
-import Link from 'next/link';
+import { PageHeader } from '@/components/admin/ui/PageHeader';
+import {
+  FormCard,
+  FormActions,
+  Field,
+  Input,
+  Textarea,
+  Select,
+  CheckboxField,
+} from '@/components/admin/ui/Form';
+import { Loader2 } from 'lucide-react';
 
-export default function EditarEventoPage({
-  params,
-}: {
-  params: { id: string };
-}) {
+export default function EditarEventoPage({ params }: { params: { id: string } }) {
   const router = useRouter();
   const [evento, setEvento] = useState<any>(null);
   const [isSubmitting, setIsSubmitting] = useState(false);
@@ -56,11 +61,19 @@ export default function EditarEventoPage({
     }
   };
 
+  // Formata a data ISO para o input datetime-local (YYYY-MM-DDThh:mm) no fuso local.
+  const formatDatetimeLocal = (isoString: string) => {
+    if (!isoString) return '';
+    const date = new Date(isoString);
+    const tzoffset = date.getTimezoneOffset() * 60000;
+    return new Date(date.getTime() - tzoffset).toISOString().slice(0, 16);
+  };
+
   if (isLoading) {
     return (
-      <div className="flex items-center justify-center min-h-[400px]">
-        <div className="flex flex-col items-center gap-3 text-gray-400">
-          <Loader2 size={32} className="animate-spin" />
+      <div className="flex min-h-[400px] items-center justify-center">
+        <div className="flex flex-col items-center gap-3 text-brand-green-deep/40">
+          <Loader2 size={30} className="animate-spin text-brand-green" />
           <p className="text-sm">Carregando evento...</p>
         </div>
       </div>
@@ -69,189 +82,78 @@ export default function EditarEventoPage({
 
   if (!evento) {
     return (
-      <div className="flex items-center justify-center min-h-[400px]">
-        <p className="text-gray-500">Evento não encontrado.</p>
+      <div className="flex min-h-[400px] items-center justify-center">
+        <p className="text-brand-green-deep/50">Evento não encontrado.</p>
       </div>
     );
   }
 
-  // Format date for datetime-local input (YYYY-MM-DDThh:mm)
-  const formatDatetimeLocal = (isoString: string) => {
-    if (!isoString) return '';
-    const date = new Date(isoString);
-    // Adjust to local timezone to prevent offset shifting in input
-    const tzoffset = date.getTimezoneOffset() * 60000;
-    const localISOTime = new Date(date.getTime() - tzoffset).toISOString().slice(0, 16);
-    return localISOTime;
-  };
-
   return (
-    <div className="max-w-4xl mx-auto space-y-6">
-      {/* Cabeçalho */}
-      <div className="flex items-center gap-3">
-        <Link
-          href="/admin/eventos"
-          className="p-2 rounded-lg text-gray-400 hover:text-brand-green hover:bg-brand-cream transition-colors"
-        >
-          <ArrowLeft size={20} />
-        </Link>
-        <div>
-          <h1 className="text-2xl font-serif font-bold text-brand-green-deep">
-            Editar Evento
-          </h1>
-          <p className="text-sm text-gray-500 mt-0.5">
-            Atualize as informações do evento e salve as alterações.
-          </p>
-        </div>
-      </div>
+    <div className="mx-auto max-w-4xl space-y-6">
+      <PageHeader
+        title="Editar Evento"
+        backHref="/admin/eventos"
+        description="Atualize as informações do evento e salve as alterações."
+      />
 
-      {/* Formulário */}
-      <form
-        onSubmit={handleSubmit}
-        className="bg-white rounded-xl2 shadow-sm border border-brand-cream p-6 md:p-8 space-y-6"
-      >
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-          {/* Título */}
-          <div className="md:col-span-2">
-            <label
-              htmlFor="titulo"
-              className="block text-sm font-medium text-gray-700 mb-1"
-            >
-              Título do Evento <span className="text-red-500">*</span>
-            </label>
-            <input
-              type="text"
-              name="titulo"
-              id="titulo"
-              required
-              defaultValue={evento.titulo}
-              className="w-full border border-gray-300 rounded-lg shadow-sm px-4 py-2.5 text-sm focus:ring-2 focus:ring-brand-green focus:border-transparent outline-none transition"
-            />
-          </div>
+      <FormCard onSubmit={handleSubmit}>
+        <Field label="Título do Evento" htmlFor="titulo" required>
+          <Input type="text" name="titulo" id="titulo" required defaultValue={evento.titulo} />
+        </Field>
 
-          {/* Data de Início */}
-          <div>
-            <label
-              htmlFor="data_inicio"
-              className="block text-sm font-medium text-gray-700 mb-1"
-            >
-              Data e Hora <span className="text-red-500">*</span>
-            </label>
-            <input
+        <div className="grid grid-cols-1 gap-6 md:grid-cols-2">
+          <Field label="Data e Hora" htmlFor="data_inicio" required>
+            <Input
               type="datetime-local"
               name="data_inicio"
               id="data_inicio"
               required
               defaultValue={formatDatetimeLocal(evento.data_inicio)}
-              className="w-full border border-gray-300 rounded-lg shadow-sm px-4 py-2.5 text-sm focus:ring-2 focus:ring-brand-green focus:border-transparent outline-none transition bg-white"
+              className="bg-white"
             />
-          </div>
-
-          {/* Local */}
-          <div>
-            <label
-              htmlFor="local"
-              className="block text-sm font-medium text-gray-700 mb-1"
-            >
-              Local
-            </label>
-            <input
-              type="text"
-              name="local"
-              id="local"
-              defaultValue={evento.local || ''}
-              className="w-full border border-gray-300 rounded-lg shadow-sm px-4 py-2.5 text-sm focus:ring-2 focus:ring-brand-green focus:border-transparent outline-none transition"
-            />
-          </div>
+          </Field>
+          <Field label="Local" htmlFor="local">
+            <Input type="text" name="local" id="local" defaultValue={evento.local || ''} />
+          </Field>
         </div>
 
-        {/* Descrição Curta */}
-        <div>
-          <label
-            htmlFor="descricao_curta"
-            className="block text-sm font-medium text-gray-700 mb-1"
-          >
-            Descrição Curta
-          </label>
-          <textarea
-            name="descricao_curta"
-            id="descricao_curta"
-            rows={2}
-            defaultValue={evento.descricao_curta || ''}
-            className="w-full border border-gray-300 rounded-lg shadow-sm px-4 py-2.5 text-sm focus:ring-2 focus:ring-brand-green focus:border-transparent outline-none transition resize-none"
-          />
-        </div>
+        <Field label="Descrição Curta" htmlFor="descricao_curta">
+          <Textarea name="descricao_curta" id="descricao_curta" rows={2} defaultValue={evento.descricao_curta || ''} />
+        </Field>
 
-        {/* Imagem */}
-        <div>
-          <label className="block text-sm font-medium text-gray-700 mb-1">
-            Imagem do Evento (Opcional)
-          </label>
+        <Field label="Imagem do Evento (opcional)">
           <ImageUpload value={imagem} onChange={setImagem} />
           <input type="hidden" name="imagem" value={imagem} />
-        </div>
+        </Field>
 
-        {/* Descrição (Rich Text) */}
-        <div>
-          <label className="block text-sm font-medium text-gray-700 mb-1">
-            Descrição Completa <span className="text-red-500">*</span>
-          </label>
+        <Field label="Descrição Completa" required>
           <RichTextEditor content={descricao} onChange={setDescricao} />
           <input type="hidden" name="descricao" value={descricao} />
-        </div>
+        </Field>
 
-        {/* Configurações (Visibilidade e Status) */}
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-6 bg-gray-50 p-4 rounded-lg border border-gray-100">
-          <div>
-            <p className="text-sm font-medium text-gray-700 mb-3">Visibilidade</p>
-            <label className="flex items-center gap-2 cursor-pointer">
-              <input
-                type="checkbox"
-                name="destaque_home"
-                defaultChecked={evento.destaque_home}
-                className="h-4 w-4 rounded border-gray-300 text-brand-green focus:ring-brand-green"
-              />
-              <span className="text-sm text-gray-700">
-                Destacar na página inicial
-              </span>
-            </label>
+        <div className="grid grid-cols-1 gap-6 rounded-xl bg-brand-cream-light/50 p-4 ring-1 ring-brand-green-deep/[0.06] md:grid-cols-2">
+          <div className="space-y-2">
+            <p className="text-sm font-medium text-brand-green-deep/80">Visibilidade</p>
+            <CheckboxField name="destaque_home" label="Destacar na página inicial" defaultChecked={evento.destaque_home} />
           </div>
-
-          <div>
-            <label
-              htmlFor="status"
-              className="block text-sm font-medium text-gray-700 mb-1"
-            >
-              Status
-            </label>
-            <select
-              name="status"
-              id="status"
-              defaultValue={evento.status || 'ativo'}
-              className="w-full border border-gray-300 rounded-lg shadow-sm px-4 py-2.5 text-sm focus:ring-2 focus:ring-brand-green focus:border-transparent outline-none transition bg-white"
-            >
+          <Field label="Status" htmlFor="status">
+            <Select name="status" id="status" defaultValue={evento.status || 'ativo'}>
               <option value="ativo">Ativo</option>
               <option value="cancelado">Cancelado</option>
               <option value="finalizado">Finalizado</option>
-            </select>
-          </div>
+            </Select>
+          </Field>
         </div>
 
-        {/* Botões de ação */}
-        <div className="flex justify-end gap-3 pt-4 border-t border-gray-100">
-          <Button
-            as="button"
-            type="button"
-            variant="outline"
-            onClick={() => router.push('/admin/eventos')}
-          >
+        <FormActions>
+          <Button as="button" type="button" variant="outline" onClick={() => router.push('/admin/eventos')}>
             Cancelar
           </Button>
           <Button as="button" type="submit" variant="secondary" disabled={isSubmitting}>
             {isSubmitting ? 'Salvando...' : 'Salvar Alterações'}
           </Button>
-        </div>
-      </form>
+        </FormActions>
+      </FormCard>
     </div>
   );
 }

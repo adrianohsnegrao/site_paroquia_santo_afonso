@@ -6,14 +6,19 @@ import { fetchAvisoById, updateAviso } from '../actions';
 import { Button } from '@/components/ui/Button';
 import { ImageUpload } from '@/components/admin/ImageUpload';
 import { RichTextEditor } from '@/components/admin/RichTextEditor';
-import { ArrowLeft, Loader2 } from 'lucide-react';
-import Link from 'next/link';
+import { PageHeader } from '@/components/admin/ui/PageHeader';
+import {
+  FormCard,
+  FormActions,
+  Field,
+  Input,
+  Textarea,
+  Select,
+  CheckboxField,
+} from '@/components/admin/ui/Form';
+import { Loader2 } from 'lucide-react';
 
-export default function EditarAvisoPage({
-  params,
-}: {
-  params: { id: string };
-}) {
+export default function EditarAvisoPage({ params }: { params: { id: string } }) {
   const router = useRouter();
   const [aviso, setAviso] = useState<any>(null);
   const [isSubmitting, setIsSubmitting] = useState(false);
@@ -49,7 +54,6 @@ export default function EditarAvisoPage({
     try {
       const formData = new FormData(e.currentTarget);
       await updateAviso(params.id, formData);
-      // O redirect acontece dentro da Server Action
     } catch (error) {
       console.error('Erro ao atualizar aviso:', error);
       alert('Erro ao atualizar aviso. Tente novamente.');
@@ -59,9 +63,9 @@ export default function EditarAvisoPage({
 
   if (isLoading) {
     return (
-      <div className="flex items-center justify-center min-h-[400px]">
-        <div className="flex flex-col items-center gap-3 text-gray-400">
-          <Loader2 size={32} className="animate-spin" />
+      <div className="flex min-h-[400px] items-center justify-center">
+        <div className="flex flex-col items-center gap-3 text-brand-green-deep/40">
+          <Loader2 size={30} className="animate-spin text-brand-green" />
           <p className="text-sm">Carregando aviso...</p>
         </div>
       </div>
@@ -70,154 +74,63 @@ export default function EditarAvisoPage({
 
   if (!aviso) {
     return (
-      <div className="flex items-center justify-center min-h-[400px]">
-        <p className="text-gray-500">Aviso não encontrado.</p>
+      <div className="flex min-h-[400px] items-center justify-center">
+        <p className="text-brand-green-deep/50">Aviso não encontrado.</p>
       </div>
     );
   }
 
   return (
-    <div className="max-w-4xl mx-auto space-y-6">
-      {/* Cabeçalho */}
-      <div className="flex items-center gap-3">
-        <Link
-          href="/admin/avisos"
-          className="p-2 rounded-lg text-gray-400 hover:text-brand-green hover:bg-brand-cream transition-colors"
-        >
-          <ArrowLeft size={20} />
-        </Link>
-        <div>
-          <h1 className="text-2xl font-serif font-bold text-brand-green-deep">
-            Editar Aviso
-          </h1>
-          <p className="text-sm text-gray-500 mt-0.5">
-            Atualize os campos e salve para aplicar as alterações.
-          </p>
-        </div>
-      </div>
+    <div className="mx-auto max-w-4xl space-y-6">
+      <PageHeader
+        title="Editar Aviso"
+        backHref="/admin/avisos"
+        description="Atualize os campos e salve para aplicar as alterações."
+      />
 
-      {/* Formulário */}
-      <form
-        onSubmit={handleSubmit}
-        className="bg-white rounded-xl2 shadow-sm border border-brand-cream p-6 md:p-8 space-y-6"
-      >
-        {/* Título */}
-        <div>
-          <label
-            htmlFor="titulo"
-            className="block text-sm font-medium text-gray-700 mb-1"
-          >
-            Título <span className="text-red-500">*</span>
-          </label>
-          <input
-            type="text"
-            name="titulo"
-            id="titulo"
-            required
-            defaultValue={aviso.titulo}
-            className="w-full border border-gray-300 rounded-lg shadow-sm px-4 py-2.5 text-sm focus:ring-2 focus:ring-brand-green focus:border-transparent outline-none transition"
-          />
-        </div>
+      <FormCard onSubmit={handleSubmit}>
+        <Field label="Título" htmlFor="titulo" required>
+          <Input type="text" name="titulo" id="titulo" required defaultValue={aviso.titulo} />
+        </Field>
 
-        {/* Resumo */}
-        <div>
-          <label
-            htmlFor="resumo"
-            className="block text-sm font-medium text-gray-700 mb-1"
-          >
-            Resumo
-          </label>
-          <textarea
-            name="resumo"
-            id="resumo"
-            rows={3}
-            defaultValue={aviso.resumo || ''}
-            className="w-full border border-gray-300 rounded-lg shadow-sm px-4 py-2.5 text-sm focus:ring-2 focus:ring-brand-green focus:border-transparent outline-none transition resize-none"
-          />
-        </div>
+        <Field label="Resumo" htmlFor="resumo">
+          <Textarea name="resumo" id="resumo" rows={3} defaultValue={aviso.resumo || ''} />
+        </Field>
 
-        {/* Imagem de Capa */}
-        <div>
-          <label className="block text-sm font-medium text-gray-700 mb-1">
-            Imagem de Capa (Opcional)
-          </label>
+        <Field label="Imagem de Capa">
           <ImageUpload value={coverImage} onChange={setCoverImage} />
           <input type="hidden" name="imagem_capa" value={coverImage} />
-        </div>
+        </Field>
 
-        {/* Conteúdo (Rich Text) */}
-        <div>
-          <label className="block text-sm font-medium text-gray-700 mb-1">
-            Conteúdo <span className="text-red-500">*</span>
-          </label>
+        <Field label="Conteúdo" required>
           <RichTextEditor content={conteudo} onChange={setConteudo} />
           <input type="hidden" name="conteudo" value={conteudo} />
-        </div>
+        </Field>
 
-        {/* Destaques e Status */}
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-          {/* Checkboxes de destaque */}
-          <div className="space-y-3">
-            <p className="text-sm font-medium text-gray-700">Visibilidade</p>
-            <label className="flex items-center gap-2 cursor-pointer">
-              <input
-                type="checkbox"
-                name="destaque"
-                defaultChecked={aviso.destaque}
-                className="h-4 w-4 rounded border-gray-300 text-brand-green focus:ring-brand-green"
-              />
-              <span className="text-sm text-gray-700">
-                Marcar como destaque
-              </span>
-            </label>
-            <label className="flex items-center gap-2 cursor-pointer">
-              <input
-                type="checkbox"
-                name="destaque_home"
-                defaultChecked={aviso.destaque_home}
-                className="h-4 w-4 rounded border-gray-300 text-brand-green focus:ring-brand-green"
-              />
-              <span className="text-sm text-gray-700">
-                Exibir na página inicial
-              </span>
-            </label>
+        <div className="grid grid-cols-1 gap-6 md:grid-cols-2">
+          <div className="space-y-2">
+            <p className="text-sm font-medium text-brand-green-deep/80">Visibilidade</p>
+            <CheckboxField name="destaque" label="Marcar como destaque" defaultChecked={aviso.destaque} />
+            <CheckboxField name="destaque_home" label="Exibir na página inicial" defaultChecked={aviso.destaque_home} />
           </div>
 
-          {/* Status */}
-          <div>
-            <label
-              htmlFor="status"
-              className="block text-sm font-medium text-gray-700 mb-1"
-            >
-              Status
-            </label>
-            <select
-              name="status"
-              id="status"
-              defaultValue={aviso.status || 'rascunho'}
-              className="w-full border border-gray-300 rounded-lg shadow-sm px-4 py-2.5 text-sm focus:ring-2 focus:ring-brand-green focus:border-transparent outline-none transition bg-white"
-            >
+          <Field label="Status" htmlFor="status">
+            <Select name="status" id="status" defaultValue={aviso.status || 'rascunho'}>
               <option value="rascunho">Rascunho</option>
               <option value="publicado">Publicado</option>
-            </select>
-          </div>
+            </Select>
+          </Field>
         </div>
 
-        {/* Botões de ação */}
-        <div className="flex justify-end gap-3 pt-4 border-t border-gray-100">
-          <Button
-            as="button"
-            type="button"
-            variant="outline"
-            onClick={() => router.push('/admin/avisos')}
-          >
+        <FormActions>
+          <Button as="button" type="button" variant="outline" onClick={() => router.push('/admin/avisos')}>
             Cancelar
           </Button>
           <Button as="button" type="submit" variant="secondary" disabled={isSubmitting}>
             {isSubmitting ? 'Salvando...' : 'Salvar Alterações'}
           </Button>
-        </div>
-      </form>
+        </FormActions>
+      </FormCard>
     </div>
   );
 }

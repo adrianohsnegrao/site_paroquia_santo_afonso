@@ -45,6 +45,12 @@ const config: Config = {
       boxShadow: {
         soft: "0 18px 40px -20px rgba(18, 63, 42, 0.25)",
         card: "0 8px 24px -12px rgba(18, 63, 42, 0.16)",
+        // Elevações refinadas (duas camadas) para o painel admin.
+        panel:
+          "0 1px 2px rgba(18, 63, 42, 0.04), 0 12px 28px -14px rgba(18, 63, 42, 0.16)",
+        "panel-hover":
+          "0 2px 4px rgba(18, 63, 42, 0.05), 0 22px 44px -18px rgba(18, 63, 42, 0.24)",
+        "panel-sm": "0 1px 2px rgba(18, 63, 42, 0.05)",
       },
       borderRadius: {
         // Bordas discretas e institucionais (≈ rounded-lg)

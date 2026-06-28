@@ -30,4 +30,39 @@
   .container-px {
     @apply px-4 sm:px-6 lg:px-8;
   }
+
+  /* Barra de rolagem minimalista: trilho invisível, polegar fino que só
+     aparece ao passar o mouse / rolar. Usada no menu e em áreas roláveis. */
+  .scrollbar-minimal {
+    scrollbar-width: thin;
+    scrollbar-color: transparent transparent;
+  }
+  .scrollbar-minimal::-webkit-scrollbar {
+    width: 6px;
+    height: 6px;
+  }
+  .scrollbar-minimal::-webkit-scrollbar-track {
+    background: transparent;
+  }
+  .scrollbar-minimal::-webkit-scrollbar-thumb {
+    background: transparent;
+    border-radius: 9999px;
+    transition: background-color 0.2s ease;
+  }
+  /* Variante clara (sobre fundos escuros, ex.: sidebar) */
+  .scrollbar-minimal-light:hover {
+    scrollbar-color: rgba(255, 255, 255, 0.22) transparent;
+  }
+  .scrollbar-minimal-light:hover::-webkit-scrollbar-thumb,
+  .scrollbar-minimal-light:focus-within::-webkit-scrollbar-thumb {
+    background: rgba(255, 255, 255, 0.22);
+  }
+  /* Variante escura (sobre fundos claros, ex.: conteúdo) */
+  .scrollbar-minimal-dark:hover {
+    scrollbar-color: rgba(18, 63, 42, 0.22) transparent;
+  }
+  .scrollbar-minimal-dark:hover::-webkit-scrollbar-thumb,
+  .scrollbar-minimal-dark:focus-within::-webkit-scrollbar-thumb {
+    background: rgba(18, 63, 42, 0.22);
+  }
 }
