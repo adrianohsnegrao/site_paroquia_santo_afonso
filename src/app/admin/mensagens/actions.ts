@@ -30,6 +30,8 @@ export async function fetchMensagens() {
     return [];
   }
 
+  console.log('Total de mensagens encontradas no DB:', data?.length);
+
   return data;
 }
 

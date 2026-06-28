@@ -3,6 +3,8 @@ import { fetchMensagens, deleteMensagem } from './actions';
 import { Button } from '@/components/ui/Button';
 import { Eye, Trash2, Mail } from 'lucide-react';
 
+export const dynamic = 'force-dynamic';
+
 export default async function AdminMensagensPage() {
   const mensagens = await fetchMensagens();
 
